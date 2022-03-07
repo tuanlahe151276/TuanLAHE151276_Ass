@@ -16,6 +16,10 @@
         <servlet-name>LoginSuccess</servlet-name>
         <servlet-class>LoginSuccess.LoginSuccess</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HomeControl</servlet-name>
+        <servlet-class>Home.HomeControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>LoginSuccess</servlet-name>
         <url-pattern>/LoginSuccess</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeControl</servlet-name>
+        <url-pattern>/HomeControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
