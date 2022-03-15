@@ -66,6 +66,27 @@ public class DAO {
         }
         return list;
     }
+    public Product getAllProductByID(String id) {
+        String query = "Select * from Product\n" +
+        "where ID = ?";
+        try {
+            conn = new DBContext().getConnection();
+           
+            ps = conn.prepareStatement(query);
+             ps.setString(1, id);//mo ket noi voi sql
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return (new Product(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getDouble(4),
+                        rs.getString(5),
+                        rs.getString(6)));
+            }
+        } catch (Exception e) {
+        }
+       return null; 
+    }
 
     public List<Category> getAllCategory() {
         List<Category> list = new ArrayList<>();

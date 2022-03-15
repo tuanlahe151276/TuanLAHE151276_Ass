@@ -53,25 +53,8 @@
         <jsp:include page="Menu.jsp"></jsp:include>
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-3">
-                        <div class="card bg-light mb-3">
-                            <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
-                            <ul class="list-group category_block">
-                            <c:forEach items="${ALLCate}" var="o">
-                                <li class="list-group-item text-white"><a href="#">${o.name}</a></li>
-                            </c:forEach>
-                        </ul>
-                    </div>
-                    <div class="card bg-light mb-3">
-                        <div class="card-header bg-success text-white text-uppercase">Last product</div>
-                        <div class="card-body">
-                            <img class="img-fluid" src="${last.image}" />
-                            <h5 class="card-title">${last.name}</h5>
-                            <p class="card-text">${last.description}</p>
-                            <p class="bloc_left_price">${last.price} $</p>
-                        </div>
-                    </div>
-                </div>
+                <jsp:include page="left.jsp"></jsp:include>
+
                 <div class="col-sm-9">
                     <div class="container">
                         <div class="card">
@@ -79,29 +62,26 @@
                                 <aside class="col-sm-5 border-right">
                                     <article class="gallery-wrap"> 
                                         <div class="img-big-wrap">
-                                            <div> <a href="#"><img src="${p.image}"></a></div>
+                                            <div> <a href="#"><img src="${detail.image}"></a></div>
                                         </div> <!-- slider-product.// -->
                                         <div class="img-small-wrap">
-                                            <div class="item-gallery"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCepDDx2BVt6xaS4HE-_i43nybyVabVS6B3d8M33F9BF_YY_jC1xaIZsNuR_o&usqp=CAc"> </div>
-                                            <div class="item-gallery"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCepDDx2BVt6xaS4HE-_i43nybyVabVS6B3d8M33F9BF_YY_jC1xaIZsNuR_o&usqp=CAc"> </div>
-                                            <div class="item-gallery"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCepDDx2BVt6xaS4HE-_i43nybyVabVS6B3d8M33F9BF_YY_jC1xaIZsNuR_o&usqp=CAc"> </div>
-                                            <div class="item-gallery"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCepDDx2BVt6xaS4HE-_i43nybyVabVS6B3d8M33F9BF_YY_jC1xaIZsNuR_o&usqp=CAc"> </div>
+                                            
                                         </div> <!-- slider-nav.// -->
                                     </article> <!-- gallery-wrap .end// -->
                                 </aside>
                                 <aside class="col-sm-7">
                                     <article class="card-body p-5">
-                                        <h3 class="title mb-3">${p.name}</h3>
+                                        <h3 class="title mb-3">${detail.name}</h3>
 
                                         <p class="price-detail-wrap"> 
                                             <span class="price h3 text-warning"> 
-                                                <span class="currency">US $</span><span class="num">${p.price}</span>
+                                                <span class="currency">US $</span><span class="num">${detail.price}</span>
                                             </span> 
                                             <!--<span>/per kg</span>--> 
                                         </p> <!-- price-detail-wrap .// -->
                                         <dl class="item-property">
                                             <dt>Description</dt>
-                                            <dd><p>${p.description} </p></dd>
+                                            <dd><p>${detail.description} </p></dd>
                                         </dl>
 <!--                                        <dl class="param param-feature">
                                             <dt>Model#</dt>
@@ -146,57 +126,6 @@
             </div>
         </div>
         <!-- Footer -->
-        <footer class="text-light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-lg-4 col-xl-3">
-                        <h5>About</h5>
-                        <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
-                        <p class="mb-0">
-                            Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
-                        </p>
-                    </div>
-
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto">
-                        <h5>Informations</h5>
-                        <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
-                        <ul class="list-unstyled">
-                            <li><a href="">Link 1</a></li>
-                            <li><a href="">Link 2</a></li>
-                            <li><a href="">Link 3</a></li>
-                            <li><a href="">Link 4</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto">
-                        <h5>Others links</h5>
-                        <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
-                        <ul class="list-unstyled">
-                            <li><a href="">Link 1</a></li>
-                            <li><a href="">Link 2</a></li>
-                            <li><a href="">Link 3</a></li>
-                            <li><a href="">Link 4</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md-4 col-lg-3 col-xl-3">
-                        <h5>Contact</h5>
-                        <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
-                        <ul class="list-unstyled">
-                            <li><i class="fa fa-home mr-2"></i> My company</li>
-                            <li><i class="fa fa-envelope mr-2"></i> email@example.com</li>
-                            <li><i class="fa fa-phone mr-2"></i> + 33 12 14 15 16</li>
-                            <li><i class="fa fa-print mr-2"></i> + 33 12 14 15 16</li>
-                        </ul>
-                    </div>
-                    <div class="col-12 copyright mt-3">
-                        <p class="float-left">
-                            <a href="#">Back to top</a>
-                        </p>
-                        <p class="text-right text-muted">created with <i class="fa fa-heart"></i> by <a href="https://t-php.fr/43-theme-ecommerce-bootstrap-4.html"><i>t-php</i></a> | <span>v. 1.0</span></p>
-                    </div>
-                </div>
-            </div>
-        </footer>
+       <jsp:include page="Footer.jsp"></jsp:include>
     </body>
 </html>

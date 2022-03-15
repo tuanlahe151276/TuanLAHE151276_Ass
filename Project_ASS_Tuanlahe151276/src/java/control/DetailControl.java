@@ -10,7 +10,6 @@ import entity.Category;
 import entity.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author anhtu
  */
-@WebServlet(name = "CategoryControl", urlPatterns = {"/category"})
-public class CategoryControl extends HttpServlet {
+@WebServlet(name = "DetailControl", urlPatterns = {"/detail"})
+public class DetailControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,23 +36,20 @@ public class CategoryControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String cateID = request.getParameter("ccid");
-        DAO dao = new DAO();
+        String id = request.getParameter("pid");
         
+        DAO dao = new DAO();
         List<Category> listC = dao.getAllCategory();
         Product last = dao.getLast();
-        List<Product> list = dao.getAllProductByCategory(cateID);
         
         
-        request.setAttribute("listCC", listC);
+        Product p = dao.getAllProductByID(id);
+         request.setAttribute("listCC", listC);
         request.setAttribute("p", last);
-        request.setAttribute("listP", list);
-        request.setAttribute("tag", cateID);
+        request.setAttribute("detail", p);
+        request.getRequestDispatcher("Detail.jsp").forward(request, response);
         
-        request.getRequestDispatcher("Home.jsp").forward(request, response);
     }
-
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
