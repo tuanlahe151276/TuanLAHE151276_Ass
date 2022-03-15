@@ -72,7 +72,7 @@
                                 </td>
                                 <td>${o.price} $</td>
                                 <td>
-                                    <a href="#editEmployeeModal"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="editproduct?pid=${o.id}"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                     <a href="delete?pid=${o.id}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                 </td>
                             </tr>
@@ -105,29 +105,29 @@
                         <div class="modal-body">					
                             <div class="form-group">
                                 <label>Name</label>
-                                <input name="name" type="text" class="form-control" required>
+                                <input value="${detail.name}" name="name" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Image</label>
-                                <input name="image" type="text" class="form-control" required>
+                                <input value="${detail.image}" name="image" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Price</label>
-                                <input name="price" type="text" class="form-control" required>
+                                <input value="${detail.price}" name="price" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Title</label>
-                                <textarea name="title" class="form-control" required></textarea>
+                                <textarea name="title" class="form-control" required>${detail.title} </textarea>
                             </div>
                             <div class="form-group">
                                 <label>Description</label>
-                                <textarea name="description" class="form-control" required></textarea>
+                                <textarea  name="description" class="form-control" required>${detail.description}</textarea>
                             </div>
                             <div class="form-group">
                                 <label>Category</label>
                                 <select name="category" class="form-select" aria-label="Default select example">
-                                    <c:forEach items="${listC}" var="o">
-                                        <option value="${o.id}">${o.name}</option>
+                                    <c:forEach items="${listCC}" var="o">
+                                        <option value="${o.cid}">${o.cname}</option>
                                     </c:forEach>
                                 </select>
                             </div>
