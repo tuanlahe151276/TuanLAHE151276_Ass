@@ -105,23 +105,23 @@
                         <div class="modal-body">					
                             <div class="form-group">
                                 <label>Name</label>
-                                <input value="${detail.name}" name="name" type="text" class="form-control" required>
+                                <input  name="name" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Image</label>
-                                <input value="${detail.image}" name="image" type="text" class="form-control" required>
+                                <input  name="image" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Price</label>
-                                <input value="${detail.price}" name="price" type="text" class="form-control" required>
+                                <input name="price" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Title</label>
-                                <textarea name="title" class="form-control" required>${detail.title} </textarea>
+                                <textarea name="title" class="form-control" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Description</label>
-                                <textarea  name="description" class="form-control" required>${detail.description}</textarea>
+                                <textarea  name="description" class="form-control" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Category</label>
