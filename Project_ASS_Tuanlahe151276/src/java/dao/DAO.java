@@ -231,6 +231,18 @@ public class DAO {
         return list;
     }
     
+    public void deleteProduct(String pid){
+    String query ="delete from Product\n" +
+        "where id = ?";
+        try {
+             conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(query);
+            ps.setString(1, pid);
+           
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
     public static void main(String[] args) {
         DAO dao = new DAO();
        
