@@ -8,7 +8,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="home">Shoes</a>
+                <a class="navbar-brand" href="home">Home</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -53,9 +53,9 @@
                                 </button>
                             </div>
                         </div>
-                        <a class="btn btn-success btn-sm ml-3" href="show">
-                            <i class="fa fa-shopping-cart"></i> Cart
-                            <span class="badge badge-light">3</span>
+                        <a class="btn btn-success btn-sm ml-3" href="Cart.jsp">
+                            <a class="nav-link" href="print">Cart</a>
+                            
                         </a>
                     </form>
                 </div>
@@ -63,7 +63,23 @@
         </nav>
         <section class="jumbotron text-center">
             <div class="container">
+
+<style type="text/css">
+    .jumbotron{
+     
+        background-image: url(header_image.png);
+        color: #ffffff;
+        font-style: initial;
+        background-image: 1853 252px;
+
+    }
+    h1{
+        font-size:90px;
+        font-style: oblique;
+    }
+
+</style>
                 <h1 class="jumbotron-heading">Hãng Sơn ALEX</h1>
-                <p class="lead text-muted mb-0">Uy tín tạo nên thương hiệu</p>
+                
             </div>
         </section>

@@ -9,6 +9,7 @@ import context.DBContext;
 import entity.Account;
 import entity.Category;
 import entity.Product;
+import entity.ProductDetail;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -295,6 +296,47 @@ public class DAO {
     
     
     }
+    public List<ProductDetail> getAll() {
+        String query = "select * from product";
+        List<ProductDetail> list = new ArrayList<>();
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new ProductDetail(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getDouble(4),
+                rs.getInt(5))
+                );
+            }
+            return list;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    
+    public ProductDetail getProduct(String txt) {
+        String query = "select * from product where id = ?";
+        List<Product> list = new ArrayList<>();
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, txt);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new ProductDetail(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getDouble(4),
+                1);
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
        

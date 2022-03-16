@@ -141,6 +141,7 @@
                 </div>
             </div>
         </div>
+        <a href="home"><button type="button" class="btn btn-primary">Back to home</button>
         <!-- Edit Modal HTML -->
         <div id="editEmployeeModal" class="modal fade">
             <div class="modal-dialog">
