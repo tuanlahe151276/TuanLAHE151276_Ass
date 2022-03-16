@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author trinh
+ * @author anhtu
  */
 @WebServlet(name = "ShowCartControl", urlPatterns = {"/print"})
 public class ShowCartControl extends HttpServlet {
@@ -33,28 +33,47 @@ public class ShowCartControl extends HttpServlet {
         PrintWriter out = response.getWriter();
         List<ProductDetail> list = new ArrayList<>();
         DAO dao = new DAO();
+        //out.print("assss");
+       
+
+
         for (Cookie o : arr) {
+            
             if (o.getName().equals("id")) {
+               // o.setMaxAge(-1);
+               // out.print(o);
                 String txt[] = o.getValue().split(",");
                 for (String s : txt) {
-                    list.add(dao.getProduct(s));
+                    
+                //   }
+                if(!s.equals("null"))
+                     list.add(dao.getProduct(s.trim()));
                 }
+              
             }
         }
+        //out.print(list.get(9));
         for (int i = 0; i < list.size(); i++) {
             int count = 1;
             for (int j = i+1; j < list.size(); j++) {
-                if(list.get(i).getId() == list.get(j).getId()){
+//               // out.print(list.get(i));
+//              //  out.print("acsss"+i);
+              if(list.get(i)!=null&& list.get(j)!=null){
+                     if(list.get(i).getId() == list.get(j).getId()){
                     count++;
                     list.remove(j);
                     j--;
                     list.get(i).setAmount(count);
-                }
+                
+              }
+                
+             }
             }
         }
         double total = 0;
-        for (ProductDetail o : list) {
-            total = total + o.getAmount() * o.getPrice();
+       for (ProductDetail o : list) {
+           if(o!=null){
+            total = total + o.getAmount() * o.getPrice();}
         }
         request.setAttribute("list", list);
         request.setAttribute("total", total);

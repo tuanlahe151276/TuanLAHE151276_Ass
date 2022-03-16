@@ -79,7 +79,7 @@
     }
 
 </style>
-                <h1 class="jumbotron-heading">Hãng Sơn ALEX</h1>
+                <h1  class="jumbotron-heading">Hãng Sơn ALEX</h1>
                 
             </div>
         </section>

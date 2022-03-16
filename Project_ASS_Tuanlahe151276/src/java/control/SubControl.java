@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author trinh
+ * @author anhtu
  */
 @WebServlet(name = "SubControl", urlPatterns = {"/sub"})
 public class SubControl extends HttpServlet {
