@@ -6,23 +6,20 @@
 package control;
 
 import dao.DAO;
-import entity.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author anhtu
  */
-@WebServlet(name = "ManagerAccount", urlPatterns = {"/ManagerAccount"})
-public class ManagerAccount extends HttpServlet {
+@WebServlet(name = "EditAccount", urlPatterns = {"/EditAccount"})
+public class EditAccount extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,21 +33,35 @@ public class ManagerAccount extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        Account a = (Account) session.getAttribute("acc");
-        int id = a.getId();
+          response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        String uid = request.getParameter("id");
+        String pass = request.getParameter("pass");
+        String user = request.getParameter("user");
+        String isSell = request.getParameter("isSell");
+        String isAdmin = request.getParameter("isAdmin");
+       if(isSell==null)
+               isSell ="0";
+       else
+           isSell="1";
+       if(isAdmin==null)
+           isAdmin="0";
+       else
+           isAdmin="1";
+        
         DAO dao = new DAO();
-        List<Account> list = dao.getAllAccount();
-        String b= (String)session.getAttribute("mess_dele");
-        if(b=="1")
-        session.setAttribute("mess_dele", "Xoa Thanh Cong");
-        else if(b=="0")
-            session.setAttribute("mess_dele", "Djt me m xoa cai dau buoi");
-        else
-            session.setAttribute("mess_dele", "");
-        request.setAttribute("listU", list);
-       
-        request.getRequestDispatcher("ManagerAccount.jsp").forward(request, response);
+        dao.EditAccount(user, pass, isSell, isAdmin, uid);
+        response.sendRedirect("ManagerAccount");
+//        response.getWriter().print(uid);
+//                response.getWriter().print(pass);
+//
+//                        response.getWriter().print(user);
+
+//                                response.getWriter().print(isSell);
+//                                        response.getWriter().print(isAdmin);
+//int a =dao.EditAccount(user, pass, isSell, isAdmin, uid);
+//response.getWriter().print(a);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

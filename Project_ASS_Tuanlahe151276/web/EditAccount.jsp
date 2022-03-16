@@ -1,8 +1,9 @@
 <%-- 
-    Document   : Edit.jsp
-    Created on : Mar 16, 2022, 12:23:47 AM
+    Document   : EditAccount
+    Created on : Mar 17, 2022, 3:16:27 AM
     Author     : anhtu
 --%>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -32,7 +33,7 @@
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h2>Edit <b>Product</b></h2>
+                            <h2>Edit <b>Account</b></h2>
                         </div>
                         <div class="col-sm-6">
                         </div>
@@ -42,44 +43,41 @@
             <div id="editEmployeeModal">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form action="edit" method="post">
+                        <form action="EditAccount" method="post">
                             <div class="modal-header">						
-                                <h4 class="modal-title">Edit Product</h4>
+                                <h4 class="modal-title">Edit Account</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <div class="modal-body">					
                                 <div class="form-group">
                                     <label>ID</label>
-                                    <input value="${detail.id}" name="id" type="text" class="form-control" readonly required>
+                                    <input value="${Udetail.id}" name="id" type="text" class="form-control" readonly required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Name</label>
-                                    <input value="${detail.name}" name="name" type="text" class="form-control" required>
+                                    <label>user</label>
+                                    <input value="${Udetail.user}" name="user" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Image</label>
-                                    <input value="${detail.image}" name="image" type="text" class="form-control" required>
+                                    <label>passWord</label>
+                                    <input value="${Udetail.pass}" name="pass" type="text" class="form-control" required>
                                 </div>
-                                <div class="form-group">
-                                    <label>Price</label>
-                                    <input value="${detail.price}" name="price" type="text" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Title</label>
-                                    <textarea name="title" class="form-control" required>${detail.title}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Description</label>
-                                    <textarea name="description" class="form-control" required>${detail.description}</textarea>
-                                </div>
-                                <div class="form-group">
+                                 <div class="form-group">
+                                <label>isSeller</label>
+                                <input name="isSell" type="checkbox" class="form-control" >
+                            </div>
+                            <div class="form-group">
+                                <label>isAdmin</label>
+                                <input name="isAdmin" type="checkbox" class="form-control" >
+                            </div>
+                                
+                                <!--<div class="form-group">
                                     <label>Category</label>
                                     <select name="category" class="form-select" aria-label="Default select example">
-                                        <c:forEach items="${listCC}" var="o">
-                                            <option value="${o.cid}">${o.cname}</option>
-                                        </c:forEach>
+                                        <%--<c:forEach items="${listU}" var="o">--%>
+                                            <option value="${o.id}">${o.cname}</option>
+                                        <%--</c:forEach>--%>
                                     </select>
-                                </div>
+                                </div>-->
 
                             </div>
                             <div class="modal-footer">

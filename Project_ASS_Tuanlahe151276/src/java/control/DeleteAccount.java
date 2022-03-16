@@ -6,10 +6,8 @@
 package control;
 
 import dao.DAO;
-import entity.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +19,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author anhtu
  */
-@WebServlet(name = "ManagerAccount", urlPatterns = {"/ManagerAccount"})
-public class ManagerAccount extends HttpServlet {
+@WebServlet(name = "DeleteAccount", urlPatterns = {"/DeleteAccount"})
+public class DeleteAccount extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,21 +34,18 @@ public class ManagerAccount extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        Account a = (Account) session.getAttribute("acc");
-        int id = a.getId();
-        DAO dao = new DAO();
-        List<Account> list = dao.getAllAccount();
-        String b= (String)session.getAttribute("mess_dele");
-        if(b=="1")
-        session.setAttribute("mess_dele", "Xoa Thanh Cong");
-        else if(b=="0")
-            session.setAttribute("mess_dele", "Djt me m xoa cai dau buoi");
-        else
-            session.setAttribute("mess_dele", "");
-        request.setAttribute("listU", list);
+         String uid = request.getParameter("uid");
+       DAO dao = new DAO();
+       int a=dao.deleteAccount(uid);
+       HttpSession session = request.getSession();
        
-        request.getRequestDispatcher("ManagerAccount.jsp").forward(request, response);
+       if(a>0){
+          session.setAttribute("mess_dele", "1");
+      response.sendRedirect("ManagerAccount");}
+       else{
+       session.setAttribute("mess_dele", "0");
+       response.sendRedirect("ManagerAccount");
+       }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

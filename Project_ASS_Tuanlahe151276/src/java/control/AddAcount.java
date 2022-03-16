@@ -53,6 +53,7 @@ public class AddAcount extends HttpServlet {
         }
 
         HttpSession session = request.getSession();
+        
 
         DAO dao = new DAO();
         dao.InsertAcount(user, pass, isSell, isAdmin);

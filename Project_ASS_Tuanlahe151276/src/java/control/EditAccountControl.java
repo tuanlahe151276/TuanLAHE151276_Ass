@@ -7,6 +7,8 @@ package control;
 
 import dao.DAO;
 import entity.Account;
+import entity.Category;
+import entity.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -15,14 +17,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author anhtu
  */
-@WebServlet(name = "ManagerAccount", urlPatterns = {"/ManagerAccount"})
-public class ManagerAccount extends HttpServlet {
+@WebServlet(name = "EditAccountControl", urlPatterns = {"/EditAccountControl"})
+public class EditAccountControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,21 +37,17 @@ public class ManagerAccount extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        Account a = (Account) session.getAttribute("acc");
-        int id = a.getId();
+        String id = request.getParameter("uid");
+        
         DAO dao = new DAO();
-        List<Account> list = dao.getAllAccount();
-        String b= (String)session.getAttribute("mess_dele");
-        if(b=="1")
-        session.setAttribute("mess_dele", "Xoa Thanh Cong");
-        else if(b=="0")
-            session.setAttribute("mess_dele", "Djt me m xoa cai dau buoi");
-        else
-            session.setAttribute("mess_dele", "");
+       List<Account> list = dao.getAllAccount();
         request.setAttribute("listU", list);
-       
-        request.getRequestDispatcher("ManagerAccount.jsp").forward(request, response);
+        
+        Account p = dao.getAllAccountByID(id);
+        
+        request.setAttribute("Udetail", p);
+        request.getRequestDispatcher("EditAccount.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

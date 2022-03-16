@@ -33,10 +33,12 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <h2>Manage <b>Account</b></h2>
+                            <h4 style="color: red" >${mess_dele}</h4> 
                         </div>
                         <div class="col-sm-6">
                             <a href="#addEmployeeModal"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Account</span></a>
-                            <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
+                            
+                          <!--  <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>	-->					
                         </div>
                     </div>
                 </div>
@@ -73,8 +75,8 @@
                                 <td>${o.isAdmin}</td>
                                 
                                 <td>
-                                    <a href="editproduct?pid=${o.id}"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="delete?pid=${o.id}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                    <a href="EditAccountControl?uid=${o.id}"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="DeleteAccount?uid=${o.id}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -101,8 +103,8 @@
                     <form action="addAcount" method="post">
                         
                         <div class="modal-header">						
-                            <h4 class="modal-title">Add Product</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Edit Product</h4>
+                            <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
                         </div>
                         <div class="modal-body">					
                             <div class="form-group">
@@ -115,11 +117,11 @@
                             </div>
                             <div class="form-group">
                                 <label>isSeller</label>
-                                <input name="isSell" type="checkbox" class="form-control" required>
+                                <input name="isSell" type="checkbox" class="form-control" >
                             </div>
                             <div class="form-group">
                                 <label>isAdmin</label>
-                                <input name="isAdmin" type="checkbox" class="form-control" required>
+                                <input name="isAdmin" type="checkbox" class="form-control" >
                             </div>
                             
                             
@@ -140,17 +142,17 @@
                 <div class="modal-content">
                     <form>
                         <div class="modal-header">						
-                            <h4 class="modal-title">Edit Employee</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Edit Account</h4>
+                           <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
                         </div>
                         <div class="modal-body">					
                             <div class="form-group">
-                                <label>Name</label>
+                                <label>User</label>
                                 <input type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" class="form-control" required>
+                                <label>PassWord</label>
+                                <input type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Address</label>
@@ -175,7 +177,7 @@
                 <div class="modal-content">
                     <form>
                         <div class="modal-header">						
-                            <h4 class="modal-title">Delete Product</h4>
+                            <h4 class="modal-title">Delete Account</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">					

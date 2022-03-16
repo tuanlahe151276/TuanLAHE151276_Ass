@@ -232,6 +232,26 @@ public class DAO {
         return list;
     }
     
+    public Account getAllAccountByID(String id) {
+        String query = "Select * from Account\n" +
+        "where uID = ?";
+        try {
+            conn = new DBContext().getConnection();
+           
+            ps = conn.prepareStatement(query);
+             ps.setString(1, id);//mo ket noi voi sql
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return (new Account(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                       rs.getInt(4),
+                rs.getInt(5)));
+            }
+        } catch (Exception e) {
+        }
+       return null; 
+    }
     public void deleteProduct(String pid){
     String query ="delete from Product\n" +
         "where id = ?";
@@ -243,6 +263,20 @@ public class DAO {
             ps.executeUpdate();
         } catch (Exception e) {
         }
+    }
+    public int deleteAccount(String uid){
+    String query ="delete from Account\n" +
+        "where uID = ?";
+    int a= 0;
+        try {
+             conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(query);
+            ps.setString(1, uid);
+           
+            a=ps.executeUpdate();
+        } catch (Exception e) {
+        }
+        return a;
     }
     public void InsertProduct(String name , String image, String price, String title, String description, String category,int sid ){
         String query ="insert [dbo].[product]\n"
@@ -329,12 +363,40 @@ public class DAO {
              ps.setString(5, description);
              ps.setString(6, category);
              ps.setString(7, pid);
-            rs = ps.executeQuery();
+            ps.executeUpdate();
             
             
         } catch (Exception e) {
         }
     
+    
+    }
+    
+    
+    public int  EditAccount(String user , String pass, String isSell, String isAdmin, String uid ){
+        String query ="UPDATE Account\n" +
+"                set [user]=?,\n" +
+"                [pass]=?,\n" +
+"                [isSell]=?,\n" +
+"                [isAdmin]=?\n" +
+"                where uID=?";
+               int a =0;
+        try {
+            conn = new DBContext().getConnection();
+           
+            ps = conn.prepareStatement(query);
+             ps.setString(1, user);
+             ps.setString(2, pass);
+             ps.setString(3, isSell);
+             ps.setString(4, isAdmin);
+           
+             ps.setString(5, uid);
+             a=ps.executeUpdate();
+            
+            
+        } catch (Exception e) {
+        }
+    return a;
     
     }
     public List<ProductDetail> getAll() {
@@ -383,10 +445,9 @@ public class DAO {
        
         List<Account> list = dao.getAllAccount();
         
+        
 
-        for (Account o : list) {
-            System.out.println(o);
-        }
+       
     }
 
 }
