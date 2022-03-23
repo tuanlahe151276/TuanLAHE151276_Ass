@@ -45,12 +45,12 @@
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th>
+                          <%--  <th>
                                 <span class="custom-checkbox">
                                     <input type="checkbox" id="selectAll">Select All
                                     <label for="selectAll"></label>
                                 </span>
-                            </th>
+                            </th>--%>
                             <th>id</th>
                             <th>user</th>
                             <th>pass</th>
@@ -62,12 +62,12 @@
                     <tbody>
                         <c:forEach items="${listU}" var="o">
                             <tr>
-                                <td>
+                               <%-- <td>
                                     <span class="custom-checkbox">
                                         <input type="checkbox" id="checkbox1" name="options[]" value="1">
                                         <label for="checkbox1"></label>
                                     </span>
-                                </td>
+                                </td>--%>
                                 <td>${o.id}</td>
                                 <td>${o.user}</td>
                                 <td>${o.pass}</td>
@@ -103,7 +103,7 @@
                     <form action="addAcount" method="post">
                         
                         <div class="modal-header">						
-                            <h4 class="modal-title">Edit Product</h4>
+                            <h4 class="modal-title">Edit Account</h4>
                             <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
                         </div>
                         <div class="modal-body">					
@@ -117,12 +117,11 @@
                             </div>
                             <div class="form-group">
                                 <label>isSeller</label>
-                                <input name="isSell" type="checkbox" class="form-control" >
-                            </div>
-                            <div class="form-group">
+                                <input name="isSell" type="checkbox" >
                                 <label>isAdmin</label>
-                                <input name="isAdmin" type="checkbox" class="form-control" >
+                                <input name="isAdmin" type="checkbox" >
                             </div>
+                            
                             
                             
 

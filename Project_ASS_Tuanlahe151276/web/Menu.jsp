@@ -19,6 +19,9 @@
                        <li class="nav-item">
                             <a class="nav-link" href="ManagerAccount">Manager Account</a>
                         </li
+                        <li class="nav-item">
+                            <a class="nav-link" href="history">History</a>
+                        </li>
                         </c:if>
                         
                         <c:if test="${sessionScope.acc.isSell == 1}">

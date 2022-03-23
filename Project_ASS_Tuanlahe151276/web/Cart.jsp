@@ -17,6 +17,7 @@
 
     <body>
        <jsp:include page="Menu.jsp"></jsp:include>
+       <form action="order123" method="post">
         <div class="shopping-cart">
             <div class="px-4 px-lg-0">
 
@@ -27,6 +28,7 @@
 
                                 <!-- Shopping cart table -->
                                 <div class="table-responsive">
+                                    
                                     <table class="table">
                                         <thead>
                                             <tr>
@@ -46,6 +48,9 @@
                                         </thead>
                                         <tbody>
                                             <c:forEach items="${list}" var="o">
+                                            <input hidden="" name ="pid" value="${o.id}">
+                                            <input hidden="" name ="amount" value="${o.amount}">
+                                           
                                                 <tr>
                                                     <th scope="row">
                                                         <div class="p-2">
@@ -55,10 +60,10 @@
                                                             </div>
                                                         </div>
                                                     </th>
-                                                    <td class="align-middle"><strong>${o.price}</strong></td>
+                                                    <td class="align-middle"><strong>${o.price}00 VND</strong></td>
                                                     <td class="align-middle">
-                                                        <a href="sub?id=${o.id}"><button class="btnSub">-</button></a> <strong>${o.amount}</strong>
-                                                        <a href="cart?id=${o.id}"><button class="btnAdd">+</button></a>
+                                                        <a href="sub?id=${o.id}"><button type="button" class="btnSub">-</button></a> <strong>${o.amount}</strong>
+                                                        <a href="cart?id=${o.id}"><button type="button" class="btnAdd">+</button></a>
                                                     </td>
                                                             <td class="align-middle"><a href="remove?id=${o.id}" class="text-dark">
                                                         <button type="button" class="btn btn-danger">Delete</button>
@@ -68,6 +73,7 @@
                                             </c:forEach>
                                         </tbody>
                                     </table>
+                                        
                                 </div>
                                 <!-- End -->
                             </div>
@@ -78,10 +84,19 @@
                                 <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Voucher</div>
                                 <div class="p-4">
                                     <div class="input-group mb-4 border rounded-pill p-2">
-                                        <input type="text" placeholder="Nhập Voucher" aria-describedby="button-addon3" class="form-control border-0">
-                                        <div class="input-group-append border-0">
-                                            <button id="button-addon3" type="button" class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Sử dụng</button>
-                                        </div>
+                                        <input type="text" placeholder="Nhập Tên Khách Hàng" name ="cname" aria-describedby="button-addon3" class="form-control border-0">
+                                        
+                                        
+                                    </div>
+                                    <div class="input-group mb-4 border rounded-pill p-2">
+                                        <input type="text" placeholder="Nhập sdt " name="phone" aria-describedby="button-addon3" class="form-control border-0">
+                                        
+                                       
+                                    </div>
+                                    <div class="input-group mb-4 border rounded-pill p-2">
+                                        <input type="text" placeholder="Nhập Địa chỉ" name="address" aria-describedby="button-addon3" class="form-control border-0">
+                                        
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -89,14 +104,15 @@
                                 <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Thành tiền</div>
                                 <div class="p-4">
                                     <ul class="list-unstyled mb-4">
-                                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tổng tiền hàng</strong><strong>${total}</strong></li>
+                                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tổng tiền hàng</strong><strong>${total}00 VND</strong></li>
                                         <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Phí vận chuyển</strong><strong>Free ship</strong></li>
                                         <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">VAT</strong><strong>${vat}</strong></li>
                                         <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tổng thanh toán</strong>
-                                            <h5 class="font-weight-bold">${sum} ₫</h5>
+                                            <h5 class="font-weight-bold">${sum}00 VND</h5>
                                         </li>
-                                    </ul><a href="home" class="btn btn-dark rounded-pill py-2 btn-block">Mua hàng</a>
+                                </ul><button  class="btn btn-dark rounded-pill py-2 btn-block">Mua hàng</button>
                                 </div>
+                                        
                             </div>
                         </div>
 
@@ -104,6 +120,7 @@
                 </div>
             </div>
         </div>
+                                        </form>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

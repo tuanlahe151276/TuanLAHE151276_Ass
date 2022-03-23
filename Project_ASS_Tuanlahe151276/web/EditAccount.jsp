@@ -63,12 +63,12 @@
                                 </div>
                                  <div class="form-group">
                                 <label>isSeller</label>
-                                <input name="isSell" type="checkbox" class="form-control" >
-                            </div>
-                            <div class="form-group">
+                                <input name="isSell" type="checkbox"  >
+                                
                                 <label>isAdmin</label>
-                                <input name="isAdmin" type="checkbox" class="form-control" >
+                                <input name="isAdmin" type="checkbox" >
                             </div>
+                            
                                 
                                 <!--<div class="form-group">
                                     <label>Category</label>
